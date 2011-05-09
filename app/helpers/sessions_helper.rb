@@ -13,6 +13,10 @@ module SessionsHelper
     @current_user ||= user_from_remember_token
   end
   
+  def authenticate
+    deny_access unless signed_in?
+  end
+
   def signed_in?
     !current_user.nil?
   end
